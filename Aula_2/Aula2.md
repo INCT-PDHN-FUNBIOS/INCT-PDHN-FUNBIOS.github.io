@@ -24,4 +24,6 @@ Realize o tutorial de início ao GitHub, descrito pela própria plataforma [*Lea
 
 **Link para o tutorial:**
 
-https://github.com/skills/introduction-to-gith
+https://github.com/skills/introduction-to-github
+
+Siga as instruções na página.
