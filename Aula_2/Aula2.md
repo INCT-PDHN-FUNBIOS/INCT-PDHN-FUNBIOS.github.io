@@ -10,8 +10,9 @@ Já o GitHub é uma plataforma online que utiliza o Git como ferramenta de contr
 
 ## Parte 1
 
-Assista ao vídeo abaixo para obter uma introdução ao controle de versão utilizando o Git e o GitHub.
+Assista ao vídeo abaixo para obter uma introdução ao controle de versão utilizando o Git e o GitHub:
 
+<iframe src="https://drive.google.com/file/d/1dqhy3Nj1MNpKjkBze3bZeJgqSJKPetdi/preview" width="640" height="480"></iframe>
 
 ## Parte 2
 
