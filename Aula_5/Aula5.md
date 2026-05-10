@@ -8,13 +8,13 @@ https://dalmolingroup.imd.ufrn.br/
 
 O curso é dividido em 5 módulos:
 
-- [História do R](01_historia.qmd)
-- [Funcionamento Básico do R](02_operation.qmd)
-- [Trabalhando com Vetores](03_vectors.qmd)
-- [Matrizes, Listas e Arrays](04_matrix_lists_arrays.qmd)
-- [Manipulação de Dados](05_dataframes.qmd)
-- [Importação e Exportação de Dados](06_imp_exp.qmd)
-- [Definindo Funções](07_func_escop.qmd)
+- [História do R](#aula5-history)
+- [Funcionamento Básico do R](#aula5-operation)
+- [Trabalhando com Vetores](#aula5-vectors)
+- [Matrizes, Listas e Arrays](#aula5-matrix)
+- [Manipulação de Dados](#aula5-dataframes)
+- [Importação e Exportação de Dados](#aula5-impexp)
+- [Definindo Funções](#aula5-func)
 
 O tutorial completo pode também ser encotrado em: https://github.com/dalmolingroup/introductionR-course.
 

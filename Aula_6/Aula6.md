@@ -10,11 +10,11 @@ Ao longo deste material, serão abordados conceitos e aplicações fundamentais 
 
 O conteúdo está organizado em três capítulos principais:
 
-[Docker](1Docker.md)
+[Docker](#aula6-docker)
 
-[Conda](2Conda.md)
+[Conda](#aula6-conda)
 
-[Singularity/Apptainer](3Apptainer.md)
+[Singularity/Apptainer](#aula6-apptainer)
 
 ---
 

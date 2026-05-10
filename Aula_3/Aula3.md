@@ -2,8 +2,8 @@
 
 A presente aula está estruturada em duas partes:
 
-1. **Parte 1:** [Introdução ao Bash](Aula_3/1-Introducao_bash.md).
-2. **Parte 2:** [Aprendendo bash e a estrutura do Google Colab](Aula_3/2-CLI-Colab.pt.md).
+1. **Parte 1:** [Introdução ao Bash](#aula3-bash).
+2. **Parte 2:** [Aprendendo bash e a estrutura do Google Colab](#aula3-colab).
 
 # Infográficos da aula
 
