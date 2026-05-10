@@ -1,0 +1,119 @@
+# Importação e exportação de dados 
+Uma das habilidades básicas necessárias para se fazer análises com o R é importar arquivos e fazer conexões com, por exemplo, bancos de dados, e exportar os resultados obtidos em formatos que possam ser lidos pela maioria dos softwares atuais. 
+
+## Importando arquivos
+
+Vamos aqui listar algumas funções úteis para a importação de arquivos no R. 
+
+- `source()`
+
+A função `source()` carrega arquivos de scripts em R e executa os comandos ali contidos.
+```{r eval=FALSE}
+# Caminho onde o script está salvo
+source("/home/usuario/Área de Trabalho/script.R") 
+```
+
+- `load()`
+
+A função `load()` permite o carregamento de arquivos binários reconhecíveis pelo R. A extensão *.RData* é reconhecida pelo RStudio. 
+```{r eval=FALSE}
+# Caminho onde o .RData está salvo
+load("/home/usuario/Área de Trabalho/arquivo.RData") 
+```
+
+## Importando dados tabulares
+A principal função para importar dados tabulares (tabelas, planilhas, etc.) para o R é a `read.table()`. Esta função possui vários argumentos que podem ser modificados.  
+Antes de carregar dados tabulares no R, é importante saber como o dado está organizado (se a separação entre as colunas é feita por tabulação ou por vírgula, por exemplo.)
+
+Alguns argumentos cuja modificação pode ser útil para a importação da tabela:
+
+- `file`: caminho do diretório onde o arquivo está.
+- `header`: se `FALSE`, não considera o cabeçalho (se houver) da tabela
+- `sep`: como o dado está separado. Se por tabulação, `sep = "\t"`, se por vírgula, `sep = ","`
+- `dec`: como os números decimais são definidos, se com "." ou ",".
+- `col.names` e `row.names`: recebem um vetor contendo os nomes das colunas e das linhas, respectivamente.
+- `quote`: atribui um caracter para as aspas. Por padrão, atribui "". 
+- `comment.char`: atribui um caracter para ser usado como comentário. 
+- `skip`: valor numérico. Pula a importação da quantidade definida de linhas. 
+- `stringsAsFactors`: se uma das colunas da tabela for um vetor de caracteres, a opção `TRUE` a considera como um vetor de fatores. 
+
+Outras duas funções bastante utilizadas são derivadas da função `read.table()`. Estas possuem os mesmos argumentos da função `read.table()`.
+
+- `read.delim()`: por default, considera o argumento `sep = "\t"`. Útil para a importação de arquivos cujos elementos são separados por tabulações. 
+- `read.csv()`: por default, considera o argumento `sep = ","`. Útil para leitura de arquivos *.csv*. 
+
+## Importando arquivos de estrutura desconhecida
+Quando lidamos com arquivos dos quais desconhecemos a sua estrutura, podemos dispor de algumas estratégias para facilitar a importação deles para o R. 
+
+Podemos usar a função `readLines()`. Esta função pode abrir uma conexão (ver adiante) com um arquivo e ler o conteúdo de suas linhas. A saída da função é um vetor de caracteres, onde o conteúdo de cada linha do arquivo original compreenderá uma posição do vetor de saída. Este procedimento pode revelar como o dado está organizado: se é um dado tabulado, como os elementos de cada coluna estão separados, etc. 
+```{r eval=FALSE}
+# Irá ler as 10 primeiras linhas do arquivo
+readLines("COG.mappings.v9.0.txt", 10) 
+```
+
+Uma outra forma de desvendar a estrutura de um arquivo é usando a função `scan()`. A saída da função `scan()` é um vetor de caracteres onde cada string do arquivo original compreenderá uma posição do vetor de saída.
+
+```{r eval=FALSE}
+scan(file = 'COG.mappings.v9.0.txt', nlines = 10, what = character())
+```
+
+## Conexões
+As funções citadas anteriormente tem em comum a capacidade de abrirem conexões com arquivos e extraírem as informações neles contidas. Além destas, o R possui muitas outras funções para lidar com outros tipos de arquivos e dados externos ao R.
+
+Pode-se também estabelecer conexões com sites da web:
+```{r eval=FALSE}
+# url() abre uma conexão com arquivo web
+con <- url("http://www.tribunadonorte.com.br/", "r", 10)
+x <- readLines(con)
+x[1:10]
+close(con)
+```
+
+## Salvando arquivos
+Os objetos do R podem ser salvos em arquivos *.RData* por meio da função `save()`. Uma quantidade indeterminada de objetos podem ser salvos no mesmo arquivo *.RData*.
+```{r eval=FALSE}
+save(unido, biometria, esportes, file = "arquivo.RData")    
+```
+
+Outra funcionalidade útil é a exportação de objetos tabulares do R para arquivos de texto. Para isso, usamos a função `write.table()`. Esta função possui argumentos semelhantes aos da função `read.table()`. 
+
+Ao usar a função `write.table()`, é importante definir o diretório no qual o arquivo será salvo e o tipo de separador usado para separar os elementos (argumento `sep`). Segue a seguinte estrutura:
+
+```{r eval=FALSE}
+write.table(<objeto>, file = <diretório de destino>, sep = <separador>)
+```
+
+Exemplo:
+```{r eval=FALSE}
+write.table(table1, file = "arquivo.txt", sep = "\t", row.names = FALSE, quote = FALSE)
+```
+
+Além disso, também como a função `read.table()`, `write.table()` possui outras funções genéricas como `write.csv()`, por exemplo, a qual possui o argumento `sep = ","` por default.
+
+## Desafio
+
+::: callout-tip
+## Pratique sem IA!
+
+Os desafios a seguir foram criados para ajudá-lo a desenvolver suas habilidades de forma independente.\
+Evite o uso de Inteligência Artificial e tente resolver os problemas por conta própria.\
+Aprender com a prática fortalecerá seu raciocínio e aprofundará seu conhecimento! 🚀
+:::
+
+Este exercício será feito usando o arquivo 'happiness.csv' em `content/data/hapiness.csv` 
+
+1. Neste exercício, vamos importar uma tabela (em arquivo de texto) como um dataframe, fazer algumas operações e em seguida vamos salvar o resultado em um outro arquivo de texto. Antes de importar o arquivo, verifique sua estrutura (como as colunas estão separadas, se tem cabeçalho, etc.)
+
+
+a) Importe o arquivo corretamente e o armazene em uma variável. Obs.: A tabela possui alguns campos numéricos onde o separador decimal é uma vírgula. Importe a tabela de modo que as vírgulas sejam transformadas em pontos (procure ajuda na documentação das funções de importação vistas na aula).
+
+b) Verifique se a classe das colunas do dataframe condizem com o tipo de dado armazenado. Por exemplo, a coluna dos países é um vetor de caracter?
+
+c) Crie um subset do dataframe contendo apenas as informações dos países da América Latina e Caribe.
+
+d) De acordo com o rank de felicidade, qual país da América Latina é o mais feliz?
+
+e) Crie um outro subset contendo apenas os países europeus. Calcule a média de felicidade (baseando-se no score de felicidade) dos países europeus e dos países da América Latina. Em qual região as  pessoas são mais felizes?
+
+f) Salve o dataframe com as informações da América Latina em um arquivo de texto. Ele deve utilizar como separador o ';'. 
+

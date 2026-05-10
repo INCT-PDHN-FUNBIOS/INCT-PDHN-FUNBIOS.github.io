@@ -1,0 +1,396 @@
+## Vetores
+
+Função de concatenação `c()`:
+
+```{r}
+number<-c(1, 2, 3, 4, 5)                       #numeric
+letter<-c("x", "y", "z", "w", "j")             #character
+logico<- c(TRUE, FALSE, FALSE, TRUE, FALSE)    #logical
+seq<-1:10       
+complexo<-4i
+```
+
+A função `class()` pode ser usada para acessar a classe de um determinado objeto:
+
+::: {.callout-tip collapse="true"}
+## Ex 1: Aplique a função class()
+
+```{r}
+class(number)
+class(letter)
+class(logico)
+class(seq)
+class(complexo)
+```
+:::
+
+A função `vector()` cria vetores com valores padrões de uma determinada classe:
+
+```{r eval=FALSE}
+a<-vector(mode = "integer", length = 10)
+b<-vector("logical", 10)
+c<-numeric(10)
+d<-character(10)
+e<-complex(10)
+
+x<-1                          #numeros sao salvos como numeric
+x<-1L                         #para explicitar integer, usa-se L
+```
+
+::: {.callout-tip collapse="true"}
+## Ex 2: Crie o vetor "alfa" contendo as 5 primeiras consoantes do alfabeto
+
+```{r }
+alfa <- c("b", "c", "d", "f", "g")
+alfa
+```
+:::
+
+::: {.callout-tip collapse="true"}
+## Ex 3: Crie um integer "primos" com os 5 primeiros números primos
+
+```{r }
+primos <- c(2L, 3L, 5L, 7L, 11L)
+primos
+```
+:::
+
+## Hierarquia de classes
+
+Vetores comportam apenas uma classe de elementos. Quando um vetor é criado com valores pertecentes a classes distintas, é feita uma conversão implícita. Um valor `logical` é convertido para `numeric`, e um valor `numeric` é convertido para `character`:
+
+```{r}
+class(c(1, 2, 3))
+class(c("1", "2", "3"))
+class(c(TRUE, FALSE, FALSE))
+class(c("TRUE", "FALSE", "FALSE"))
+class(c(1, "a", TRUE))
+class(c(1, "a"))
+class(c(1, T))
+class(c("a", T))
+```
+
+Com esta hierarquia, é possível somar valores lógicos, sendo `TRUE` equivalente a 1[^03_vectors-1], e `FALSE` equivalente a 0:
+
+[^03_vectors-1]: na conversão de valores numéricos para lógicos, 0 é convertido para FALSE e qualquer outro valor é convertido em TRUE
+
+```{r}
+logical<- c(TRUE, FALSE, FALSE, TRUE, FALSE)
+sum(logico)
+```
+
+Uma conversão explícita pode ser feita com as funções `as.<nome da classe>`:
+
+```{r}
+x<-0:10
+x
+class(x)
+a<-as.numeric(x)
+a
+class(a)
+b<-as.character(x)
+b
+class(b)
+c<-as.logical(x)
+c
+class(c)
+```
+
+::: {.callout-tip collapse="true"}
+## Ex.4: Verifique se "x" e "a" são iguais
+
+```{r}
+identical(x, a)
+```
+:::
+
+::: {.callout-tip collapse="true"}
+## Ex.5: Tente converter os vetores (a, b, c) em numeric
+
+```{r}
+as.numeric(a)
+as.numeric(b)
+as.numeric(c)
+```
+:::
+
+::: {.callout-tip collapse="true"}
+## Ex.6: Crie um vetor de caracteres de "a" até "d" e o converta em numérico
+
+```{r}
+char_vec <- c("a", "b", "c", "d")
+as.numeric(char_vec) # Retornará NA pois não há conversão direta
+```
+:::
+
+## Valores não disponíveis ou impossíveis
+
+Valores não disponíveis são representados por `NA` (*Not Available*), e valores impossíveis, como o resultado de uma divisão por 0, são representados por `NaN` (*Not a Number*).
+
+```{r}
+x<-c(1, 2, 3, NA)
+y<-c("a", "b", "c", NA)
+is.na(x)
+w<-rep(NA, 10)
+w
+class(w)
+z<-rep(NA_integer_, 10)
+z
+class(z)
+a <- c(1, 3, NA, 7, 9)
+sum(a)
+sum(a, na.rm=TRUE)
+```
+
+## Atributos de objetos
+
+Todos os objetos possuem atributos:
+
+```{r}
+x<-1:5
+x
+length(x)
+dim(x)
+attributes(x)
+names(x)<-c("a", "b", "c", "d", "e")
+x
+attributes(x)
+```
+
+## Fator
+
+Um vetor da classe `factor` é um vetor categórico que possui o atributo `levels`:
+
+```{r}
+x<-factor(c("s", "n", "n", "s", "s"))
+z<-factor(c("alto", "baixo", "medio"))
+x
+z
+```
+
+## Trabalhando com vetores
+
+No R as operações são vetorizadas:
+
+```{r}
+x<-1:5
+x
+y<-6:10
+y
+```
+
+Soma dos valores de ambos os vetores
+
+```{r}
+x+y
+```
+
+Podemos multiplicar um vetor por um número:
+
+```{r}
+x*2               
+x^2
+z<-c(x,y)
+z
+z+x
+w<-1:3
+w+x
+l<-c(T, T, F, T, F, F)
+l/2
+```
+
+Usamos `[]` para acessar elementos de vetores:
+
+```{r}
+letter<-c("x", "y", "z", "w", "j")
+# acessa o segundo elemento do vetor
+letter[2]               
+# podemos usar sequências de valores
+letter[2:4]             
+# usamos a função c() para valores não contíguos
+letter[c(1, 4)]         
+# usamos números negativos para excluir um ou mais valores
+letter[-2]              
+letter[c(-2, -5)]
+# podemos criar índices numéricos
+idx<-c(1, 4)            
+letter[idx]
+x<-1:10
+# podemos usar operadores relacionais como filtros
+x[x>7]                  
+# também funciona com caracteres, levando em consideração a ordem lexicográfica
+letter[letter>"k"]      
+letter[letter<"k"]
+letter=="z"
+```
+
+::: {.callout-tip collapse="true"}
+## Ex. 7: Crie um vetor de 1 até 10 e substitua o valor da oitava posição pelo valor da primeira posição.
+
+```{r}
+vec <- 1:10
+vec[8] <- vec[1]
+vec
+```
+:::
+
+Funções para identificar valores extremos:
+
+```{r}
+# definindo uma semente para a geração de valores aleatórios
+set.seed(1)
+s<-sample(-1000:1000, 200)
+# procura a posição do maior valor
+which.max(s)            
+# exibe o maior valor
+max(s)
+# exibe o menor valor
+min(s)
+# exibe o intervalo dos valores do vetor
+range(s)
+# cria um vetor lógico
+s>0                     
+# cria um vetor com as posições que satisfazem o comando
+which(s>0)              
+```
+
+::: {.callout-tip collapse="true"}
+## Ex.8: Quantos valores de s são maiores que 0?
+
+```{r}
+sum(s > 0)
+```
+:::
+
+::: {.callout-tip collapse="true"}
+## Ex.9: Faça um vetor contendo os valores de s maiores do que 0.
+
+```{r}
+positivos <- s[s > 0]
+positivos
+```
+:::
+
+Funções de ordenamento:
+
+```{r}
+x<-c(3, 8, 2, 1, 5, 9, 7, 7, 3)
+x
+# ordena um vetor
+sort(x)        
+sort(x, decreasing = T)
+# informa a ordem na qual cada elemento deve ser acessado para exibir o conteúdo do vetor em ordem crescente
+order(x)                
+# exibe o conteúdo do vetor de forma aleatória, e uma única vez, cada posição
+sample(x)     
+# elimina as replicatas
+unique(x)
+# exibe um vetor lógico referente à posição das replicatas
+duplicated(x)
+```
+
+::: {.callout-tip collapse="true"}
+## Ex.10: Quantos duplicados existem em x?
+
+```{r}
+sum(duplicated(x))
+```
+:::
+
+## Strings
+
+Conceitualmente, uma `string` é um vetor de caracteres[^03_vectors-2]. Certas operações são recorrentes na manipulação de strings, como a inserção de conteúdo numa dada posição, substituição do conteúdo de uma porção do vetor, ou a busca de um determinado padrão:
+
+[^03_vectors-2]: independente da quantidade de caracteres o atributo length será sempre igual a 1
+
+```{r}
+x<-20:30
+y<-1:4
+# adiciona valores num vetor numa posição específica
+append(x, y, after = 3)
+# concatena dois vetores, converte em character
+x<-paste("dt", 1:10, sep = "")     
+x
+```
+
+Identificando expressões regulares (regex) numa string:
+
+```{r}
+x <- c("16_24cat", "25_34cat", "35_44catch", "45_54Cat", "55_104fat")
+# identifica regex por posição
+grep("cat", x)               
+# o argumento value = T retorna os valores
+grep("cat", x, value = T)           
+# $ é um metacaractere que identifica o término da string
+grep("cat$", x, ignore.case = T)    
+# a função grepl() retorna um vetor lógico
+grepl("cat$", x, ignore.case = T)
+```
+
+## Expressões regulares
+
+| Metacaractere | Funcionalidade     |
+|---------------|--------------------|
+| \*            | 0 ou mais vezes    |
+| \+            | uma ou mais vezes  |
+| ?             | 0 ou 1 vez         |
+| {n}           | exatamente n vezes |
+| {n,}          | pelo menos n vezes |
+| {n,m}         | entre n e m vezes  |
+| \^            | início da string   |
+| \$            | final da string    |
+
+```{r}
+strings <- c("a", "ab", "acb", "accb", "acccb", "accccb")
+grep("acb", strings)
+grep("ac*b", strings)
+grep("ac+b", strings)
+grep("ac?b", strings)
+grep("ac{2}b", strings)
+grep("ac{2,}b", strings)
+grep("ac{2,3}b", strings)
+```
+
+## Desafio
+
+::: callout-tip
+## Pratique sem IA!
+
+Os desafios a seguir foram criados para ajudá-lo a desenvolver suas habilidades de forma independente.\
+Evite o uso de Inteligência Artificial e tente resolver os problemas por conta própria.\
+Aprender com a prática fortalecerá seu raciocínio e aprofundará seu conhecimento! 🚀
+:::
+
+(@)  **Considere os seguintes elementos: 1, 4, 5, "a", 10L e TRUE**
+
+  a)  Crie um vetor com os elementos acima.
+  
+  b)  Verifique a classe do vetor criado. Se houve coerção implícita, explique.
+
+(@)  **Considere as operações vetorizadas:**
+
+```{r, results=FALSE}
+# a)
+c(1, 3, 5) + c(2, 4, 6)
+
+# b)
+c(1, 3, 5) + c(2, 4, 6, 8)
+```
+
+Explique o que ocorre em cada uma das operações acima.
+
+(@)  **Considere o seguinte vetor:**
+
+```{r, results=FALSE}
+x <- c(-1, 45, -6, 88, 30, 4)
+```
+
+a)  Obtenha um outro vetor a partir deste que contenha apenas os elementos da posição 2 e da última posição.
+
+b)  Obtenha um outro vetor a partir de x que contenha todos os elementos, exceto o 3º elemento.
+
+c)  Atribua um nome para cada um dos elementos do vetor x.
+
+d)  Obtenha a posição do valor máximo contido no vetor x.
+
+e)  Obtenha um outro vetor a partir de x com todos os valores positivos.

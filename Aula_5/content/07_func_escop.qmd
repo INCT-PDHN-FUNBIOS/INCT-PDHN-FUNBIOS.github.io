@@ -1,0 +1,341 @@
+# Definindo funções em R
+
+A capacidade de escrever funções otimiza a execução de tarefas repetitivas e torna o usuário um desenvolvedor de conteúdo.
+
+## Aspectos gerais das funções em R
+
+Uma função é um objeto capaz de realizar uma ação. Por exemplo, a função `mean()` obtém a média de um vetor numérico e a função `sqrt()` realiza o cálculo da raiz quadrada de cada elemento de um vetor numérico.
+
+-   Funções podem ser usadas de forma encadeada. O resultado de uma função é usado pela função mais externa:
+
+```{r eval=FALSE}
+# O resultado da função unique() é usado pela função length()
+length(unique(mtcars$cyl))
+```
+
+## Fazendo a correspondência dos argumentos nas funções
+
+A correspondência dos argumentos de uma função pode ser feita por meio do **nome do argumento** ou por meio da **posição**. Vamos tomar como exemplo a função `rnorm()`, que gera um vetor de *n* elementos que possui valores que obedecem à distribuição normal.
+
+A função possui 3 argumentos: `n` (tamanho do vetor a ser criado), `mean` (média da distribuição) e `sd` (desvio padrão da distribuição), nesta ordem. Se os nome dos argumentos não forem definidos na chamada da função, ela assumirá que o primeiro argumento corresponde ao *n*, o segundo ao *mean* e o terceiro ao *sd*.
+
+Vamos criar um vetor de 100 elementos com média 1 e desvio padrão 2.
+
+```{r}
+# Argumentos da função rnorm
+args(rnorm)
+```
+
+```{r eval=FALSE}
+# Fazendo a correspondência pela posição dos argumentos 
+rnorm(100, 1, 2) 
+```
+
+```{r eval=FALSE}
+# Fazendo a correspondência pelo nome dos argumentos
+rnorm(mean = 1, n = 100, sd = 2)
+```
+
+Ambas as utilizações irão gerar e mesmo resultado.
+
+Observe, ainda, que as funções podem apresentar argumentos que já possuem uma valor pré-definido. Na função `rnorm()`, os argumentos `mean()` e `sd()` possuem valores pré-definidos.
+
+```{r eval=FALSE}
+# A função irá executar mesmo sem o fornecimento dos outros argumentos.
+rnorm(n = 100) 
+```
+
+Entretanto, observe que o argumento `n` não possui valor pré-definido. A ausência deste argumento impossibilita a execução da função.
+
+```{r error=TRUE}
+rnorm()
+```
+
+## Anatomia das funções em R
+
+As funções possuem três elementos primordiais:
+
+-   Argumentos: parâmetros que possibilitam a execução da ação. Ao definir a função, os argumentos podem assumir qualquer nome;
+-   Corpo: sequência de passos para resultar no objetivo da função;
+-   Ambiente: quando uma função é definida, ela cria um ambiente pŕoprio, onde as variáveis criadas dentro dela possuem valores próprios.
+
+### Definindo funções
+
+Algumas propriedades das funções:
+
+-   A função `function()` cria funções definidas pelo próprio usuário:
+
+```{r}
+my_fun <- function(arg1, arg2) { # Argumentos
+    # Corpo da função
+}
+```
+
+-   As funções podem ter uma quantidade indeterminada de argumentos e, inclusive, não apresentar argumentos:
+
+```{r}
+# Imprime 12. Não possui argumentos.
+f <- function() { 
+      12
+}
+f()
+```
+
+```{r}
+# Simplesmente imprime "BU!" com qualquer argumento.
+f1 <- function(x) { 
+      "BU!"
+}
+f1()
+```
+
+-   Os argumentos das funções podem apresentar um valor pré-definido:
+
+```{r}
+# y possui um valor pré-definido
+f2 <- function(x, y = 10) { 
+      x + y
+}
+f2(2)
+f2(2, 4)
+```
+
+-   Quando definimos um objeto dentro de uma função e este representa o resultado final da função, é necessário retornar seu valor. Para isso, podemos usar a função `return()` ou `print()`:
+
+```{r}
+# Imprimir o resultado calculado
+f3 <- function(a, b) {
+      res <- c()
+      res[1] <- a^2
+      res[2] <- b + 1
+      print(res) 
+}
+f3(2, 4)
+```
+
+-   Funcões podem existir dentro de outras funções:
+
+```{r}
+make.power <- function(n) {
+      pow <- function(x) {
+            x^n
+      }
+      pow
+}
+
+cube <- make.power(3)
+square <- make.power(2)
+
+cube(3)
+square(2)
+```
+
+## Ambientes e escopo das funções
+
+Antes de qualquer coisa, precisamos entender o conceito de variáveis livres. As variáveis livres são variáveis que não são argumentos das funções e nem foram definidas dentro da função (no escopo da função). As regras de escopo definem como o R irá tentar buscar o valor correspondente a essa variável livre. Por exemplo:
+
+```{r}
+fun <- function(x, y) {
+    x + y + z
+}
+```
+
+A função acima possui a variável *z*, porém ela não foi definida nem como argumento nem no escopo da função.
+
+Ambientes correspondem a um conceito abstrato para definir um conjunto de objetos. O ambiente mais usado interativamente pelo usuário é o *Global Environment* ou ambiente global, que guarda as objetos e funções que construímos em uma sessão do R. Quando estamos trabalhando no console e queremos obter o valor de um objeto, o R irá procurar pelo objeto primeiramente no ambiente global e, se não encontrar, irá procurar nos outros ambientes.
+
+Para se ter uma ideia de quantos e quais os ambientes podem existir, podemos usar a função `search()`.
+
+```{r}
+search()
+```
+
+Tendo em vista a ideia de ambiente, consideremos a função `fun()` definida anteriormente. O valor da variável *z* é buscado inicialmente no escopo da função, em seguida no ambiente global e, se não encontrado, é buscado nos outros ambientes. Se, após o término da busca, o valor desta variável não for encontrado, a função retornará um erro:
+
+```{r echo=FALSE, error=FALSE}
+rm(z)
+```
+
+```{r error=TRUE}
+fun <- function(x, y) {
+    x + y + z
+}
+fun(1, 3)
+```
+
+Mais exemplos:
+
+```{r echo=FALSE, error=FALSE}
+rm(z)
+```
+
+```{r error=TRUE}
+f4 <- function(x, y) {              
+      x^2 + y/z
+}
+f4(2, 4)
+```
+
+No caso a seguir, o valor da variável *z* é definido no ambiente global e possibilita a execução da função.
+
+```{r}
+z <- 3
+f4 <- function(x, y) {              
+      x^2 + y/z
+}
+f4(2, 4)
+```
+
+## Outros exemplos
+
+Criando uma função para adicionar dois números:
+
+```{r}
+# x e y são os argumentos da função definida
+# O que a função faz: adiciona dois números
+add_num <- function(x, y) {
+    x + y 
+}
+add_num(x = 2, y = 3)
+```
+
+Criando uma função para calcular a média de um vetor numérico:
+
+```{r}
+calc_media <- function(vetor) {
+    sum(vetor)/length(vetor)
+}
+calc_media(c(1, 2, 3, 4))
+```
+
+Criando uma função que obtenha os valores extremos de um vetor numérico:
+
+```{r}
+# Após criar uma variável dentro do escopo da função, devemos retornar o valor da variável.
+obter_extremos <- function(vetor) {
+    res <- c(min(vetor, na.rm = TRUE), max(vetor, na.rm = TRUE))
+    print(res)  
+}
+obter_extremos(c(1, 2, 3, 4))
+```
+
+## Desafio
+
+::: callout-tip
+## Pratique sem IA!
+
+Os desafios a seguir foram criados para ajudá-lo a desenvolver suas habilidades de forma independente.\
+Evite o uso de Inteligência Artificial e tente resolver os problemas por conta própria.\
+Aprender com a prática fortalecerá seu raciocínio e aprofundará seu conhecimento! 🚀
+:::
+
+1.  Crie uma função chamada de 'f1' que possua uma outra função 'f2', esta definida dentro do escopo de 'f1'.
+
+A função interna ('f2') deve fazer duas coisas: - Imprimir no console o ambiente atual com a função `environment()` - Imprimir os objetos pertencentes ao seu escopo com a função `ls()`.
+
+A função externa ('f1') deve fazer 3 coisas: - Deve chamar a função 'f2' - Imprimir no console o ambiente atual com a função `environment()` - Imprimir os objetos pertencentes ao seu escopo com a função `ls()`.
+
+Uma vez definidas estas funções, chame a função externa e responda: os ambientes exibidos são os mesmos? Justifique.
+
+
+2.  Com base nas regras de escopo do R, justifique o resultado das chamadas das funções abaixo:
+
+```{r}
+# Ex.:1
+
+x <- 12
+f1 <- function(y) {
+  x <- 10
+  f2 <- function() {
+    print(x + y)
+  }
+  f2()
+}
+
+f1(4)
+
+# Ex.:2
+z <- 10
+f3 <- function(x, y) {
+  x * y * z
+}
+f3(1, 2)
+```
+
+3.  Leia o arquivo network.txt. Ele será usado nas questões 1 a 3. Este conjunto de dados representa uma rede de interação entre proteínas, cujos nomes aparecem nas colunas `node1*` e `node2*`. As demais colunas representam scores usados para inferir a força da interação. A coluna combined_score representa o score combinado destas diferentes fontes e representa a confiança total para cada interação.
+
+Como este arquivo representa uma rede, cada linha do dataframe lido será uma interação entre duas proteínas. Ou seja, os nós da rede estão representados nas colunas `node1*` e `node2*` e as arestas são as interações entre node1\* e `node2*`.
+
+```{r}
+network <- read.table("data/network.txt", sep = "\t", stringsAsFactors = F, header = T)
+```
+
+a)  Crie a função 'filtrar_rede' para selecionar as interações da rede com score combinado maior que 0.700.
+
+-   Input: dataframe da rede 'network'.
+-   Output: dataframe filtrado com as interações maiores que 0.700 e contendo apenas 3 colunas (node1, node2 e combined_score) Ex:
+
+```{r, eval=FALSE}
+nrow(filtrar_rede(network = network))
+ # [1] 948
+```
+
+b)  Crie a função 'vizinhos' que calcule a conectividade (quantidade de interações) de um determinado nó da rede e quais são os nós que se conectam com ele.
+
+-   Input: dois argumentos: nome da proteína e o dataframe onde será feita a operação
+-   Output: Imprimir no console a conectividade do nó escolhido e quais são seus vizinhos. Ex:
+
+```{r, eval=FALSE}
+vizinhos(symbol = "NGF", network = network)
+ # O gene  NGF tem  16 vizinhos
+ # PIK3R1 CASP6 IKBKB NTRK1 NFKBIA PIK3CB NFKB1 PIK3R2 BAD PIK3CA CASP3 MYD88 CHUK RELA IRAK1 IKBKG
+```
+
+c)  Ainda sobre o dataset 'network', crie uma função que receba como argumentos o nome de um gene, o dataframe da rede e o score de homologia (coluna homology), e retorne um dataframe que mostre as interações deste gene (colunas 'node1' e 'node2') para um score de homologia maior ou igual um determinado valor. Use 0.5 como um valor padrão para este limiar de score de homologia.
+
+-   Input: homologia(symbol = "CHUK", network = network)
+
+-   Output: \> homologia("CHUK", network)
+
+```{r, eval=FALSE}
+node1 node2 homology
+
+24 CHUK IRAK4 0.625
+
+271 CHUK RIPK1 0.525
+
+521 CHUK MAP3K14 0.515
+
+950 AKT2 CHUK 0.656
+
+1158 CHUK AKT3 0.638
+
+1182 CHUK AKT1 0.656
+
+1400 CHUK IKBKB 0.936
+
+1712 CHUK CHEK1 0.679
+```
+
+d)  Importe o arquivo `contents/data/COGs.RData`, disponível no sigaa, que foi usado na aula de Importação e Exportação de dados. Use o dataframe `contents/data/cog.human.data` load("COGs.RData")
+
+Faça uma função que retorne o número de grupos de ortólogos (identificadores da coluna cog_id) de uma determinada espécie (coluna spp_id)
+
+-   Input: dois argumentos - identificador da espécie e o dataframe
+-   Output: número de COGs do organismo Ex:
+
+```{r, eval=FALSE}
+contar_cogs(spp = 3702, df = cog.human.data)
+# [1] 4367
+```
+
+e)  Considere o dataset 'attitude'. Escreva uma função que receba como argumento o nome de uma das colunas e retorne um dataframe contendo o valor da média, mediana, soma das observações, e quantidade de valores faltantes (NA) na coluna:
+
+-   Input: estatisticas(attitude, "rating")
+-   Output: dataframe com os resultados Ex:
+
+```{r, eval=FALSE}
+estatisticas(attitude, "rating")
+# media mediana soma n_na
+# 1 64.63333    65.5 1939    0
+```

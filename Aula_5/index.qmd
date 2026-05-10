@@ -1,0 +1,17 @@
+# Curso de Introdução ao R {.unnumbered}
+
+::: callout-warning
+# Aviso
+
+O curso ainda está em construção então certos comandos podem não funcionar como
+esperado!
+:::
+
+Neste repositório está o material para o curso **Introdução ao R**,
+organizado pelo Prof. Rodrigo Dalmolin, do Centro Multiusuário de Bioinformática da UFRN.
+
+O curso é dividido em X módulos:
+
+- 
+-
+-

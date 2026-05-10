@@ -1,0 +1,45 @@
+project:
+  type: book
+  output-dir: docs
+
+lang: "pt-BR"
+
+book:
+  title: "Curso de Introdução ao R"
+  author: "Dalmolin Systems Biology Group"
+  chapters:
+    - index.qmd
+    - content/01_history.qmd
+    - content/02_operation.qmd
+    - content/03_vectors.qmd
+    - content/04_matrix_lists_arrays.qmd
+    - content/05_dataframes.qmd
+    - content/06_imp_exp.qmd
+    - content/07_func_escop.qmd
+  reader-mode: true
+  favicon: content/images/dalmolin_icon.svg
+  site-url: https://dalmolingroup.github.io/introductionR-course/
+  repo-url: https://github.com/dalmolingroup/introductionR-course
+  page-footer:
+      O Curso de Introdução ao R é um curso construído por membros do
+      <a href="https://dalmolingroup.imd.ufrn.br/">Dalmolin Systems Biology Group</a>.
+
+execute:
+    eval: false
+
+knitr:
+  opts_chunk:
+    message: false
+    warning: false
+
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    callout-appearance: simple
+    code-link: true
+    code-overflow: wrap
+    code-block-bg: true
+    code-block-border-left: "#b19cd9"
+    highlight-style: github

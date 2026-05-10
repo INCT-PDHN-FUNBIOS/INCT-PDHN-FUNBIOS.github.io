@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-curso INCT-PDHN-FUNBIOS</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Highlight.js for code syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button id="mobile-menu-btn" aria-label="Toggle Menu">
+        <i class="ph ph-list"></i>
+    </button>
+    
+    <div class="layout-wrapper">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <img src="img/logo.jpeg" alt="Logo do Curso" class="logo">
+                <h2>INCT-PDHN</h2>
+            </div>
+            <nav class="nav-links">
+                <a href="#home" class="nav-item active" data-file="README.md">
+                    <i class="ph ph-house"></i> Home
+                </a>
+                <a href="#intro" class="nav-item" data-file="Intro/Intro.md">
+                    <i class="ph ph-info"></i> Intro
+                </a>
+                <a href="#aula1" class="nav-item" data-file="Aula_1/Aula1.md">
+                    <i class="ph ph-book-open"></i> Aula 1
+                </a>
+                <a href="#aula2" class="nav-item" data-file="Aula_2/Aula2.md">
+                    <i class="ph ph-book-open"></i> Aula 2
+                </a>
+                
+                <!-- Aula 3 com subitens -->
+                <div class="nav-group">
+                    <button class="nav-group-btn" data-target="aula3-group">
+                        <i class="ph ph-terminal-window"></i> Aula 3
+                        <i class="ph ph-caret-down group-icon"></i>
+                    </button>
+                    <div class="nav-group-content" id="aula3-group">
+                        <a href="#aula3" class="nav-item sub-item" data-file="Aula_3/Aula3.md">Principal</a>
+                        <a href="#aula3-bash" class="nav-item sub-item" data-file="Aula_3/1-Introducao_bash.md">1. Bash</a>
+                        <a href="#aula3-colab" class="nav-item sub-item" data-file="Aula_3/2-CLI-Colab.pt.md">2. CLI Colab</a>
+                    </div>
+                </div>
+
+                <a href="#aula4" class="nav-item" data-file="Aula_4/Aula4.md">
+                    <i class="ph ph-book-open"></i> Aula 4
+                </a>
+
+                <!-- Aula 5 com subitens -->
+                <div class="nav-group">
+                    <button class="nav-group-btn" data-target="aula5-group">
+                        <i class="ph ph-code"></i> Aula 5
+                        <i class="ph ph-caret-down group-icon"></i>
+                    </button>
+                    <div class="nav-group-content" id="aula5-group">
+                        <a href="#aula5" class="nav-item sub-item" data-file="Aula_5/Aula5.md">Principal</a>
+                        <a href="#aula5-r" class="nav-item sub-item" data-file="Aula_5/r-colab.pt.md">R Colab</a>
+                        <a href="#aula5-index" class="nav-item sub-item" data-file="Aula_5/index.qmd">Index</a>
+                        <a href="#aula5-history" class="nav-item sub-item" data-file="Aula_5/content/01_history.qmd">01. History</a>
+                        <a href="#aula5-operation" class="nav-item sub-item" data-file="Aula_5/content/02_operation.qmd">02. Operation</a>
+                        <a href="#aula5-vectors" class="nav-item sub-item" data-file="Aula_5/content/03_vectors.qmd">03. Vectors</a>
+                        <a href="#aula5-matrix" class="nav-item sub-item" data-file="Aula_5/content/04_matrix_lists_arrays.qmd">04. Matrix & Arrays</a>
+                        <a href="#aula5-dataframes" class="nav-item sub-item" data-file="Aula_5/content/05_dataframes.qmd">05. Dataframes</a>
+                        <a href="#aula5-impexp" class="nav-item sub-item" data-file="Aula_5/content/06_imp_exp.qmd">06. Import/Export</a>
+                        <a href="#aula5-func" class="nav-item sub-item" data-file="Aula_5/content/07_func_escop.qmd">07. Functions</a>
+                    </div>
+                </div>
+
+                <!-- Aula 6 com subitens -->
+                <div class="nav-group">
+                    <button class="nav-group-btn" data-target="aula6-group">
+                        <i class="ph ph-box-cube"></i> Aula 6
+                        <i class="ph ph-caret-down group-icon"></i>
+                    </button>
+                    <div class="nav-group-content" id="aula6-group">
+                        <a href="#aula6" class="nav-item sub-item" data-file="Aula_6/Aula6.md">Principal</a>
+                        <a href="#aula6-docker" class="nav-item sub-item" data-file="Aula_6/1Docker.md">1. Docker</a>
+                        <a href="#aula6-conda" class="nav-item sub-item" data-file="Aula_6/2Conda.md">2. Conda</a>
+                        <a href="#aula6-apptainer" class="nav-item sub-item" data-file="Aula_6/3Apptainer.md">3. Apptainer</a>
+                    </div>
+                </div>
+            </nav>
+            
+            <div class="theme-toggle">
+                <button id="theme-btn" aria-label="Toggle Theme">
+                    <i class="ph ph-moon"></i> Dark Mode
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div id="loading" class="loader">
+                <div class="spinner"></div>
+            </div>
+            <article id="markdown-container" class="markdown-body">
+                <!-- Converted markdown will be injected here -->
+            </article>
+        </main>
+    </div>
+
+    <!-- Marked.js -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- Highlight.js Core and JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    
+    <!-- Custom App Logic -->
+    <script src="app.js"></script>
+</body>
+</html>

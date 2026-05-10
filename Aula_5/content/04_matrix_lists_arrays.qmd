@@ -1,0 +1,182 @@
+## Matrizes
+
+Matrizes são vetores bidimensionais que possuem o atributo dimensão. Por serem vetores, comportam apenas uma classe de elementos:
+
+```{r}
+x<-1:20
+x
+attributes(x)
+m<-matrix(x, 4, 5)
+m
+attributes(m)
+dim(x)<-c(4,5)
+x
+identical(x, m)
+a<-1:5
+b<--1:-5
+c<-c(3, 6, 4, 9, 1)
+# a função cbind() concatena colunas
+m<-cbind(a, b, c)       
+m
+# a função rbind() concatena linhas  
+m1<-rbind(a, b, c)
+m1
+# elementos são acessados pelos índices das duas dimenções [linha, coluna]
+m[1,3]
+# toda a linha
+m[1, ]
+m[2:3, ]
+# atribuição
+m[1,]<-NA
+m
+```
+
+::: callout-important
+Como são vetores, matrizes comportam somente uma classe de elementos
+:::
+
+## Arrays
+
+Um `array` é um vetor que possui mais de duas dimensões:
+
+```{r}
+# criando um vetor multidimensional com 4 matrizes de 5 linhas e 10 colunas
+ar<-array(1:200, c(5, 10, 4))
+ar
+# acessando a primeira matriz [linha, coluna, matriz]
+ar[,,1]                          
+```
+
+## Listas
+
+Listas são tipos especiais de vetores que comportam elementos de diferentes classes:
+
+```{r}
+a <- c(1, 3, NA, 7, 9)
+b<-matrix(1:200, 20,10)
+c<-"Gol do Gremio"
+z<-factor(c("alto", "baixo", "medio"))
+ls<-list(a, b, c, z)
+# cada elemento da lista aparece com [[]]
+ls                    
+# a função vector() pode criar listas vazias
+ls1<-vector("list", 5)   
+ls1
+```
+
+### Trabalhando com listas
+
+Listas podem ser acessadas com os operadores `[]`, `[[]]` e `$` (para listas nomeadas):
+
+```{r}
+# [] extrai uma lista
+ls[1]        
+# [[]] extrai o objeto interno
+ls[[1]]           
+class(ls[1])
+class(ls[[1]])
+# posição na lista e posição no elemento
+ls[[c(1,2)]]      
+ls[[2]][2,]
+names(ls)<-c("Arilson", "Roger", "Paulo Nunes", "Jardel")
+ls$Roger
+```
+
+## Desafio
+
+::: callout-tip
+## Pratique sem IA!
+
+Os desafios a seguir foram criados para ajudá-lo a desenvolver suas habilidades de forma independente.\
+Evite o uso de Inteligência Artificial e tente resolver os problemas por conta própria.\
+Aprender com a prática fortalecerá seu raciocínio e aprofundará seu conhecimento! 🚀
+:::
+
+1.  **Considere o seguinte vetor:**
+
+```{r}
+x <- 1:18
+```
+
+a)  Com este vetor, construa uma matriz de 6 linhas e 3 colunas de duas maneiras diferentes.
+
+
+b)  Adicione o seguinte vetor como um coluna da matriz:
+
+```{r}
+v <- letters[1:6]
+```
+
+c)  O que acontece quando juntamos este vetor à matriz?
+
+
+d)  Atribua nomes às colunas e às linhas:
+
+
+2.  **Considere a seguinte matriz:**
+
+```{r}
+set.seed(1)
+m <- matrix(sample(1:100, 20), nrow = 4, ncol = 5)
+```
+
+a)  Ordene, de maneira crescente, as linhas da matriz de acordo com os valores da coluna 1.
+
+
+b)  Exclua as colunas 2 e 4 desta matriz.
+
+
+c)  Crie um outro objeto para guardar o valor da soma das colunas desta matriz.
+
+
+3.  **Considere o objeto 'x':**
+
+```{r, results=FALSE}
+x <- list(list(list()))
+
+# A função 'str()' mostra a estrutura de um objeto.
+str(x) 
+
+# A função 'is.recursive()' indica se um objeto é recursivo
+is.recursive(x) 
+
+
+# Agora conside a seguinte lista:
+ls <- list(list(1, 2), 1:10, letters[1:5])
+```
+
+a)  Como os objetos da classe das listas diferem dos vetores atômicos?
+
+b)  Use a função 'length' na lista 'ls' acima. O que ela retorna?
+
+
+c)  Qual a classe de cada elemento desta lista?
+
+
+d)  Atribua nomes a cada um elementos desta lista.
+
+
+e)  Qual é a diferença entre as saídas dos dois comandos abaixo?
+
+```{r, results=FALSE}
+ls[2]
+ls[[2]]
+```
+
+f)  Obtenha os valores (acesse os elementos de duas formas diferentes):
+
+```{r}
+## 1) do 3º elemento da 2ª posição da lista:
+
+
+
+## 2) os elementos 1 ao 4 da terceira posição da lista.
+```
+
+4.  Considere o vetor:
+
+```{r, results=FALSE}
+b <- 1:12
+```
+
+Com este vetor, crie dois objetos do tipo 'array', usando duas abordagens diferentes.

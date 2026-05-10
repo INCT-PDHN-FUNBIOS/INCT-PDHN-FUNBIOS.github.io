@@ -1,0 +1,122 @@
+## Funcionamento básico
+
+## Operadores
+
+-   Aritmetica basica
+
+```{r, results=FALSE}
+2+5         #Adicao                     
+5-2         #Subtracao
+2*5         #Multiplicacao
+8/2         #Divisao
+2^5         #Exponenciacao
+5%%2        #Resto da divisão
+```
+
+-   Relacionais
+
+```{r, results=FALSE}
+3==5	      #Igual
+3!=5	      #Diferente
+3>5	        #Maior que
+3<5	        #Menor que
+3>=5	      #Maior ou igual
+3<=5	      #Menor ou igual    
+```
+
+-   Operações podem ser concatenadas:
+
+```{r, results=FALSE}
+((2+5-3)*10)^4/7^4
+```
+
+## Variáveis
+
+A seta "\<-" representa o simbolo de atribuição e ao escrever o nome do objeto, seu valor sera impresso. Veja o exemplo:
+
+```{r}
+x <- 1
+x
+```
+
+Caso algum valor seja atribuído ao mesmo objeto, ele será sobrescrito:
+
+```{r}
+x <- "gol do gremio!"
+x
+```
+
+Os resultados de operações podem ser salvos em objetos:
+
+```{r}
+x<-2+5
+y=5-2
+2*5->w
+z<-8/2
+
+resultado <- (((x-y)*w)^z)/(x^z)
+resultado
+```
+
+## Funções
+
+Chamando funções:
+
+```{r, class.source="standard-chunk"}
+sum(1,3,5)
+a<-rep("Aluno",times=3)
+a
+```
+
+## Acessando a documentação
+
+Estas funções buscam e exibem a documentação de funções:
+
+```{r eval=FALSE}
+help(sum)
+?sd
+??plot
+```
+
+## Diretório de trabalho
+
+Estas funções manipulam o diretório de trabalho:
+
+```{r eval=FALSE}
+# verifica o caminho para o diretório de trabalho
+getwd()
+# define o diretório de trabalho
+setwd()
+# lista os arquivos presentes no diretório de trabalho
+list.files()
+# carrega um arquivo binário do diretório de trabalho para o ambiente
+load()
+# salva o conteúdo de uma variável no diretório de trabalho
+save()
+```
+
+## Desafio
+
+::: {.callout-tip}
+## Pratique sem IA!  
+
+Os desafios a seguir foram criados para ajudá-lo a desenvolver suas habilidades de forma independente.  
+Evite o uso de Inteligência Artificial e tente resolver os problemas por conta própria.   
+Aprender com a prática fortalecerá seu raciocínio e aprofundará seu conhecimento! 🚀  
+:::
+
+José e Paulo adoram jogar basquete nas suas horas livres. Eles mantém uma competição entre si e por isso decidiram registrar todos os pontos que eles marcam durante as partidas.
+
+Até agora foram 8 partidas:
+
+-   José fez 8, 10, 12, 9, 15, 16, 11, 7 cestas.
+
+-   Paulo fez 5, 11, 13, 14, 23, 14, 9, 10 cestas.
+
+1.  **Crie dois objetos que contenham o número de cestas que cada um fez:**
+
+2.  **Verifique a classe de cada um dos objetos:**
+
+3.  **Com a utilização da ajuda do R, procure por uma função que possibilite o cálculo de médias. Com ela, calcule as médias de cestas dos dois jogadores e atribua estes valores a objetos diferentes:**
+
+4.  **Compare os valores das médias calculadas usando os operadores lógicos "\>" e "\<". Quem teve um desempenho médio melhor?**

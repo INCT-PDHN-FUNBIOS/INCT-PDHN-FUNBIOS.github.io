@@ -1,0 +1,16 @@
+## Histórico da linguagem
+
+John Chambers iniciou a criação de um ambiente de análises estatísticas em 1976 no *Bell Telephone Laboratories*, também conhecido como *Bell Labs*. Naquela época a computação estatística costumava ser feita por meio de chamadas diretas às funções de bibliotecas Fortran, e tal ambiente foi projetado para oferecer uma abordagem alternativa, mais interativa, e com funções de documentação acessível. Este ambiente foi denominado de 'S' e após 1979 o nome passou a ser usado sem as aspas simples.
+
+Em 1988 foi lançada a versão S3, muitas mudanças foram feitas na sintaxe da linguagem, estendendo o conceito de objetos, e novas funcionalidades possibilitavam a passagem de funções para outras funções, como o uso do `apply`. Foi publicado o livro The *New S Language* para introduzir as novas funcionalidades e ajudar os usuários a entender como os códigos deveriam ser escritos.
+
+A linguagem R foi criada em 1991, como uma variante da linguagem S, por Ross Ihaka e Robert Gentleman no Departamento de Estatística da Universidade de Auckland, e foi anunciada para o público em 1993. Neste mesmo ano, a *Bell Labs* concedeu uma licença exclusiva à *StatSci*, que posteriormente virou a *Insightful Corporation*, para desenvolver e vender a linguagem S. A *Insightful Corporation* adicionou algumas funcionalidades à linguagem, como a adição de uma interface gráfica, e vendia esta implementação como o produto *S-PLUS*.
+
+Uma das limitações da linguagem S era que ela só estava disponível no pacote comercial S-PLUS, e em 1995, Martin Mächler convenceu Ross e Robert a usarem a *GNU General Public License*, tornando o R um software livre. Em 1998 foi lançada a última versão da linguagem S, conhecida como S4, que fornecia funcionalidades avançadas de orientação a objetos.
+Em 2000 a versão 1.0.0 da linguagem R foi lançada publicamente. E em 2008 a *TIBCO Software Incorporation* adquiriu a *Insightful Corporation* por 25 milhões de dólares.
+
+## Instalação do R
+O interpretador da linguagem R pode ser instalado em Linux, Mac e Windows^[os passos necessários para a instalação podem ser diferentes de acordo com o sistema operacional utilizado], e encontra-se disponível gratuitamente no [Comprehensive R Archive Network (CRAN)](https://cran.r-project.org/).
+
+## RStudio
+O RStudio é um ambiente de desenvolvimento integrado que inclui console, editor ciente de sintaxe e diversas outras ferramentas, que visam o aumento da produtividade do desenvolvedor. Possui edições gratuitas e comerciais, que podem ser obtidas em [RStudio.com](https://www.rstudio.com/products/rstudio/).
