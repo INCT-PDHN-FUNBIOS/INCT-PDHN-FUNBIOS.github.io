@@ -136,6 +136,11 @@ document.addEventListener('DOMContentLoaded', () => {
             // Render HTML
             container.innerHTML = marked.parse(markdownText);
             
+            // Make container visible so mermaid can calculate dimensions correctly
+            loader.style.display = 'none';
+            container.style.display = 'block';
+            container.style.animation = 'fadeUp 0.5s forwards';
+            
             // Handle mermaid diagrams
             if (window.mermaid) {
                 mermaid.initialize({
@@ -144,26 +149,37 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
                 
                 const mermaidBlocks = container.querySelectorAll('.language-mermaid');
-                mermaidBlocks.forEach((block) => {
-                    const div = document.createElement('div');
-                    div.className = 'mermaid';
-                    div.textContent = block.textContent;
-                    
+                const blocks = Array.from(mermaidBlocks);
+                
+                for (let i = 0; i < blocks.length; i++) {
+                    const block = blocks[i];
                     const pre = block.parentElement;
-                    if (pre && pre.tagName === 'PRE') {
+                    if (!pre || pre.tagName !== 'PRE') continue;
+                    
+                    const div = document.createElement('div');
+                    div.className = 'mermaid-container';
+                    div.style.textAlign = 'center';
+                    div.style.margin = '1.5rem 0';
+                    
+                    const graphDefinition = block.textContent;
+                    const id = `mermaid-graph-${Date.now()}-${i}`;
+                    
+                    try {
+                        const { svg } = await mermaid.render(id, graphDefinition);
+                        div.innerHTML = svg;
+                        pre.parentNode.replaceChild(div, pre);
+                    } catch (err) {
+                        console.error('Mermaid rendering error:', err);
+                        div.innerHTML = `<div style="color: red; padding: 1rem; border: 1px solid red;">Erro ao renderizar diagrama Mermaid</div>`;
                         pre.parentNode.replaceChild(div, pre);
                     }
-                });
-                
-                try {
-                    await mermaid.run({ querySelector: '.mermaid' });
-                } catch (err) {
-                    console.error('Mermaid rendering error:', err);
                 }
             }
             
         } catch (error) {
             console.error('Error fetching markdown:', error);
+            loader.style.display = 'none';
+            container.style.display = 'block';
             container.innerHTML = `
                 <div style="text-align:center; padding: 2rem;">
                     <i class="ph ph-warning-circle" style="font-size: 4rem; color: var(--color-primary);"></i>
@@ -175,11 +191,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
         } finally {
-            // Hide loader, show container with animation
-            loader.style.display = 'none';
-            container.style.display = 'block';
-            container.style.animation = 'fadeUp 0.5s forwards';
-            
             // Scroll to top
             window.scrollTo(0, 0);
         }
