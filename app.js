@@ -25,6 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
         updateThemeIcon(newTheme);
+        
+        // Reload content to re-render diagrams with the new theme
+        loadContent();
     });
 
     function updateThemeIcon(theme) {
@@ -60,6 +63,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Marked.js Configuration ---
     marked.setOptions({
         highlight: function(code, lang) {
+            if (lang === 'mermaid') {
+                return code;
+            }
             if (lang && hljs.getLanguage(lang)) {
                 return hljs.highlight(code, { language: lang }).value;
             } else {
@@ -129,6 +135,32 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Render HTML
             container.innerHTML = marked.parse(markdownText);
+            
+            // Handle mermaid diagrams
+            if (window.mermaid) {
+                mermaid.initialize({
+                    startOnLoad: false,
+                    theme: document.body.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+                });
+                
+                const mermaidBlocks = container.querySelectorAll('.language-mermaid');
+                mermaidBlocks.forEach((block) => {
+                    const div = document.createElement('div');
+                    div.className = 'mermaid';
+                    div.textContent = block.textContent;
+                    
+                    const pre = block.parentElement;
+                    if (pre && pre.tagName === 'PRE') {
+                        pre.parentNode.replaceChild(div, pre);
+                    }
+                });
+                
+                try {
+                    await mermaid.run({ querySelector: '.mermaid' });
+                } catch (err) {
+                    console.error('Mermaid rendering error:', err);
+                }
+            }
             
         } catch (error) {
             console.error('Error fetching markdown:', error);
