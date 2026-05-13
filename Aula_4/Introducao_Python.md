@@ -42,9 +42,9 @@ O principal gerenciador utilizado é o *pip*, responsável por instalar, atualiz
 
 ```bash
 # Instalando biopython em sua versão mais recente
-pip install biopython
+pip3 install biopython
 # Instalando matplotlib em sua versão mais recente
-pip install matplotlib
+pip3 install matplotlib
 ```
 
 ## Paradigmas de programação em python
@@ -73,7 +73,7 @@ counteudo_GC("CATGCATGTGTCAGCACACACACGTCTAGCATGTCAGCATGCTAGCATGCAGCA")
 Abra seu editor de texto ou ambiente de desenvolvimento favorito, digite o seguinte comando e salve o arquivo como *hello_world.py*.
 
 ```python
-print("Olá mundo!)
+print("Olá mundo!")
 ```
 
 ## Execução do python
