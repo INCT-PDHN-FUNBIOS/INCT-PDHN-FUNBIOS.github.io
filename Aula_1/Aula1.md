@@ -207,8 +207,8 @@ sample_R2.fastq.gz
 em vez de:
 
 ```bash
-sample_R1.fastq.gz
-sample_R2.fastq.gz
+sample_R1.fastq
+sample_R2.fastq
 ```
 
 Outro arquivo bastante comum, em análises de alinhamento de reads, é o arquivo SAM (Sequence Alignment/Map). Esse arquivo pode se tornar extremamente grande, pois armazena alinhamentos em formato textual.
