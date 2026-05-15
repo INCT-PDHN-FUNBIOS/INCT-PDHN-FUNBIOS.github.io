@@ -1,4 +1,4 @@
-![Logo do curso](img/logo.jpeg)
+![Logo do curso](img/logo.png)
 
 # Primeiro Curso de Bioinformática INCT-PDHN / FUNBIOS
 
