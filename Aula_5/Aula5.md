@@ -41,4 +41,4 @@ Para executar o notebook no Colab, siga os passos abaixo:
 
 O notebook completamente executado, para fins de conferência, está descrito abaixo.
 
-<script src="https://gist.github.com/jpmslima/7f9bea22baef31fce83b19f86983a84e.js"></script>
+<iframe src="/Aula_4/gist-colab.html" width="100%" height="800px" frameborder="0" scrolling="yes"></iframe>
