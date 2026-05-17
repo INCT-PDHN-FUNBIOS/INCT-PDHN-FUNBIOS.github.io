@@ -97,13 +97,12 @@ save()
 
 ## Desafio
 
-::: {.callout-tip}
 ## Pratique sem IA!  
 
 Os desafios a seguir foram criados para ajudá-lo a desenvolver suas habilidades de forma independente.  
 Evite o uso de Inteligência Artificial e tente resolver os problemas por conta própria.   
 Aprender com a prática fortalecerá seu raciocínio e aprofundará seu conhecimento! 🚀  
-:::
+
 
 José e Paulo adoram jogar basquete nas suas horas livres. Eles mantém uma competição entre si e por isso decidiram registrar todos os pontos que eles marcam durante as partidas.
 
