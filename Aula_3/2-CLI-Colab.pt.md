@@ -38,4 +38,4 @@ O notebook pode ser acessado e executado no modo playground no link abaixo:
 
 O Notebook completamente executado, para fins de conferência, está descrito abaixo.
 
-<script src="https://gist.github.com/jpmslima/b952f357094385c0d7262943bd48ad44.js"></script>
+<iframe src="/gist-colab.html" width="100%" height="800px" frameborder="0" scrolling="yes"></iframe>
