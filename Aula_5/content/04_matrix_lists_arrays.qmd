@@ -31,9 +31,9 @@ m[1,]<-NA
 m
 ```
 
-::: callout-important
+
 Como são vetores, matrizes comportam somente uma classe de elementos
-:::
+
 
 ## Arrays
 
@@ -84,13 +84,13 @@ ls$Roger
 
 ## Desafio
 
-::: callout-tip
+
 ## Pratique sem IA!
 
 Os desafios a seguir foram criados para ajudá-lo a desenvolver suas habilidades de forma independente.\
 Evite o uso de Inteligência Artificial e tente resolver os problemas por conta própria.\
 Aprender com a prática fortalecerá seu raciocínio e aprofundará seu conhecimento! 🚀
-:::
+
 
 1.  **Considere o seguinte vetor:**
 

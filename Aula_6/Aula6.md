@@ -113,7 +113,3 @@ Antes da primeira aula presencial, confira se você consegue realizar as tarefas
 - [ ] Verificar e limpar o cache de imagens com `singularity cache list` e `singularity cache clean`.
 
 ---
-
-## Aviso final
-
-Encontrou algum erro ou tem sugestões? Anote e nos avise. Esse material está em construção contínua e o feedback de vocês é o que mais ajuda a melhorá-lo.a

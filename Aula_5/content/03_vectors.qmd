@@ -12,7 +12,7 @@ complexo<-4i
 
 A função `class()` pode ser usada para acessar a classe de um determinado objeto:
 
-::: {.callout-tip collapse="true"}
+
 ## Ex 1: Aplique a função class()
 
 ```{r}
@@ -22,7 +22,7 @@ class(logico)
 class(seq)
 class(complexo)
 ```
-:::
+
 
 A função `vector()` cria vetores com valores padrões de uma determinada classe:
 
@@ -37,23 +37,23 @@ x<-1                          #numeros sao salvos como numeric
 x<-1L                         #para explicitar integer, usa-se L
 ```
 
-::: {.callout-tip collapse="true"}
+
 ## Ex 2: Crie o vetor "alfa" contendo as 5 primeiras consoantes do alfabeto
 
 ```{r }
 alfa <- c("b", "c", "d", "f", "g")
 alfa
 ```
-:::
 
-::: {.callout-tip collapse="true"}
+
+
 ## Ex 3: Crie um integer "primos" com os 5 primeiros números primos
 
 ```{r }
 primos <- c(2L, 3L, 5L, 7L, 11L)
 primos
 ```
-:::
+
 
 ## Hierarquia de classes
 
@@ -96,15 +96,15 @@ c
 class(c)
 ```
 
-::: {.callout-tip collapse="true"}
+
 ## Ex.4: Verifique se "x" e "a" são iguais
 
 ```{r}
 identical(x, a)
 ```
-:::
 
-::: {.callout-tip collapse="true"}
+
+
 ## Ex.5: Tente converter os vetores (a, b, c) em numeric
 
 ```{r}
@@ -112,16 +112,16 @@ as.numeric(a)
 as.numeric(b)
 as.numeric(c)
 ```
-:::
 
-::: {.callout-tip collapse="true"}
+
+
 ## Ex.6: Crie um vetor de caracteres de "a" até "d" e o converta em numérico
 
 ```{r}
 char_vec <- c("a", "b", "c", "d")
 as.numeric(char_vec) # Retornará NA pois não há conversão direta
 ```
-:::
+
 
 ## Valores não disponíveis ou impossíveis
 
@@ -224,7 +224,7 @@ letter[letter<"k"]
 letter=="z"
 ```
 
-::: {.callout-tip collapse="true"}
+
 ## Ex. 7: Crie um vetor de 1 até 10 e substitua o valor da oitava posição pelo valor da primeira posição.
 
 ```{r}
@@ -232,7 +232,7 @@ vec <- 1:10
 vec[8] <- vec[1]
 vec
 ```
-:::
+
 
 Funções para identificar valores extremos:
 
@@ -254,22 +254,22 @@ s>0
 which(s>0)              
 ```
 
-::: {.callout-tip collapse="true"}
+
 ## Ex.8: Quantos valores de s são maiores que 0?
 
 ```{r}
 sum(s > 0)
 ```
-:::
 
-::: {.callout-tip collapse="true"}
+
+
 ## Ex.9: Faça um vetor contendo os valores de s maiores do que 0.
 
 ```{r}
 positivos <- s[s > 0]
 positivos
 ```
-:::
+
 
 Funções de ordenamento:
 
@@ -289,13 +289,13 @@ unique(x)
 duplicated(x)
 ```
 
-::: {.callout-tip collapse="true"}
+
 ## Ex.10: Quantos duplicados existem em x?
 
 ```{r}
 sum(duplicated(x))
 ```
-:::
+
 
 ## Strings
 
@@ -353,13 +353,13 @@ grep("ac{2,3}b", strings)
 
 ## Desafio
 
-::: callout-tip
+
 ## Pratique sem IA!
 
 Os desafios a seguir foram criados para ajudá-lo a desenvolver suas habilidades de forma independente.\
 Evite o uso de Inteligência Artificial e tente resolver os problemas por conta própria.\
 Aprender com a prática fortalecerá seu raciocínio e aprofundará seu conhecimento! 🚀
-:::
+
 
 (@)  **Considere os seguintes elementos: 1, 4, 5, "a", 10L e TRUE**
 

@@ -47,14 +47,14 @@ head(cars)
 tail(cars)
 ```
 
-::: {.callout-tip collapse="true"}
+
 ## Ex. 1: Criando um data.frame com carros com mais de 100hp
 
 ```{r}
 cars_100hp <- subset(mtcars, hp > 100)
 cars_100hp
 ```
-:::
+
 
 ```{r}
 # data.frames possuem colnames e rownames
@@ -91,20 +91,20 @@ biometria<-biometria[with(biometria, order(altura)), ]
 biometria
 ```
 
-::: {.callout-tip collapse="true"}
+
 ## Ex. 2: Ordenando o data.frame cars pela coluna "mpg" em ordem crescente
 
 ```{r}
 cars_sorted <- cars[order(cars$mpg), ]
 cars_sorted
 ```
-:::
+
 
 Unindo data.frames com a função `merge()`:
 
-::: callout-important
+
 Independe da ordem dos data.frames a busca é feita pelo nome, não pela ordem o resultado sempre virá em ordem alfabética
-:::
+
 
 ```{r}
 unido<-merge(biometria, esportes, by="nomes")
@@ -125,24 +125,24 @@ unido
 #load("Data/COGs.RData")
 ```
 
-::: {.callout-tip collapse="true"}
+
 ## Ex. 3: Verificando se todos os "cog_id" do objeto cogids estão contidos no objeto cog.human.data
 
 ```{r eval=FALSE}
 cogids_in_human <- cogids %in% cog.human.data$cog_id
 all(cogids_in_human)
 ```
-:::
 
-::: {.callout-tip collapse="true"}
+
+
 ## Ex. 4: Contando os tipos de OG no arquivo cog.human.data
 
 ```{r eval=FALSE}
 table(cog.human.data$OG_type)
 ```
-:::
 
-::: {.callout-tip collapse="true"}
+
+
 ## Ex. 5: Criando data.frames separados para cada tipo de OG
 
 ```{r eval=FALSE}
@@ -150,9 +150,9 @@ cog_data <- subset(cog.human.data, OG_type == "COG")
 nog_data <- subset(cog.human.data, OG_type == "NOG")
 kog_data <- subset(cog.human.data, OG_type == "KOG")
 ```
-:::
 
-::: {.callout-tip collapse="true"}
+
+
 ## Ex. 6: Verificando qual dos três data.frames tem mais OG diferentes
 
 ```{r eval=FALSE}
@@ -160,17 +160,17 @@ length(unique(cog_data$cog_id))
 length(unique(nog_data$cog_id))
 length(unique(kog_data$cog_id))
 ```
-:::
+
 
 ## Desafio
 
-::: callout-tip
+
 ## Pratique sem IA!
 
 Os desafios a seguir foram criados para ajudá-lo a desenvolver suas habilidades de forma independente.\
 Evite o uso de Inteligência Artificial e tente resolver os problemas por conta própria.\
 Aprender com a prática fortalecerá seu raciocínio e aprofundará seu conhecimento! 🚀
-:::
+
 
 1.  **Crie os dataframes abaixo:**
 
