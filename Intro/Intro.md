@@ -16,6 +16,6 @@ Crie uma conta na plataforma Google Colab em [https://colab.research.google.com/
 
 ## Acompanhamento do pré-curso
 
-O curso está disponível via GitHub em [https://github.com/lbm-ufg/pre-curso-inct-pdhn-funbios](https://github.com/lbm-ufg/pre-curso-inct-pdhn-funbios). Siga os passos descritos no arquivo README.md para acompanhar o curso.
+O curso está disponível via GitHub em [https://github.com/lbm-ufg/pre-curso-inct-pdhn-funbios](https://github.com/INCT-PDHN-FUNBIOS/INCT-PDHN-FUNBIOS.github.io). Siga os passos descritos os módulos disponíveis na aba lateral para acompanhar o curso.
 
-Usaremos toda a infraestrtura colaborativa do GitHub, incluindo as [issues](https://github.com/lbm-ufg/pre-curso-inct-pdhn-funbios/issues) para comunicação e resolução de dúvidas.
+Usaremos toda a infraestrtura colaborativa do GitHub, incluindo as [issues](https://github.com/INCT-PDHN-FUNBIOS/INCT-PDHN-FUNBIOS.github.io/issues) para comunicação e resolução de dúvidas.
