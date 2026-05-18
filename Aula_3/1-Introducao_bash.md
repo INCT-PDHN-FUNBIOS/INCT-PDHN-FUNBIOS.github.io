@@ -569,9 +569,9 @@ Em Bioinformática, os dados são frequentemente armazenados em **arquivos de te
 O `cat` (*ConCATenate*) une vários arquivos de texto em um só:
 
 ```bash
-# Como todos os discentes têm seu home dentro de /media/hd15-funbios/users/,
+# Como todos os discentes têm seu home dentro de /media/hd15-cursos/users/,
 # podemos juntar todos os "velhoarquivo.txt" produzidos pela turma com:
-cat /media/hd15-funbios/users/**/**/velhoarquivo.txt > todos-velhoarquivo.txt
+cat /media/hd15-cursos/users/**/**/velhoarquivo.txt > todos-velhoarquivo.txt
 ```
 
 > **Detalhes importantes — entrada, saída e redirecionamento**
